@@ -1,17 +1,17 @@
 import { createStore, combineReducers, compose } from 'redux';
+import { fromJS } from 'immutable';
 
 const initialState = {
-  name: 'Alex',
-  email: ''
+  contactInfo: {
+    name: 'Alex',
+    email: ''
+  }
 };
 
-function formReducer(state = initialState, action) {
+function formReducer(state = fromJS(initialState), action) {
   switch (action.type) {
     case 'HANDLE_FORM_CHANGE':
-      return {
-        ...state,
-        [action.payload.dest]: action.payload.value
-      }
+      return state.mergeDeep(action.payload)
     default:
       return state;
   }

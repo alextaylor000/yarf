@@ -15,8 +15,8 @@ function Form({ form}) {
         <input
           id='name'
           type='text'
-          onChange={(evt) => handleFormChange(evt.target.value, 'name')}
-          value={form.name}
+          onChange={(evt) => handleFormChange({ contactInfo: { name: evt.target.value } })}
+          value={form.contactInfo.name}
          />
       </p>
       <p>
@@ -24,8 +24,8 @@ function Form({ form}) {
         <input
           id='email'
           type='email'
-          onChange={(evt) => handleFormChange(evt.target.value, 'email')}
-          value={form.email}
+          onChange={(evt) => handleFormChange({ contactInfo: { email: evt.target.value } })}
+          value={form.contactInfo.email}
         />
       </p>
     </div>
@@ -34,7 +34,7 @@ function Form({ form}) {
 
 function mapStateToProps(state) {
   return {
-    form: state.form
+    form: state.form.toJS()
   }
 }
 
