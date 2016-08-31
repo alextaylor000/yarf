@@ -1,10 +1,10 @@
 import store from './store';
 
-export function handleFormChange(change) {
-  console.log('[yarf] handleFormChange', change);
+export function handleFormChange(path, value) {
+  console.log('[yarf] handleFormChange', path, value);
   store.dispatch({
     type: 'HANDLE_FORM_CHANGE',
-    payload: change
+    payload: { path, value }
     }
   );
 }

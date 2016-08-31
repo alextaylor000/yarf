@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import { handleFormChange } from './yarf';
 
 function Form({ form}) {
+  console.log('new form props:', form.contactInfo.name, form.contactInfo.email);
   return (
     <div className="App">
       <div className="App-header">
@@ -15,7 +16,7 @@ function Form({ form}) {
         <input
           id='name'
           type='text'
-          onChange={(evt) => handleFormChange({ contactInfo: { name: evt.target.value } })}
+          onChange={(evt) => handleFormChange('contactInfo.name', evt.target.value)}
           value={form.contactInfo.name}
          />
       </p>
@@ -24,7 +25,7 @@ function Form({ form}) {
         <input
           id='email'
           type='email'
-          onChange={(evt) => handleFormChange({ contactInfo: { email: evt.target.value } })}
+          onChange={(evt) => handleFormChange('contactInfo.email', evt.target.value)}
           value={form.contactInfo.email}
         />
       </p>
@@ -34,7 +35,7 @@ function Form({ form}) {
 
 function mapStateToProps(state) {
   return {
-    form: state.form.toJS()
+    form: state.form
   }
 }
 
