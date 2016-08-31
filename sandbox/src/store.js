@@ -1,13 +1,17 @@
 import { createStore, combineReducers, compose } from 'redux';
 
 const initialState = {
-  name: 'Alex'
+  name: 'Alex',
+  email: ''
 };
 
 function formReducer(state = initialState, action) {
   switch (action.type) {
     case 'HANDLE_FORM_CHANGE':
-      return { name: action.payload.value }
+      return {
+        ...state,
+        [action.payload.dest]: action.payload.value
+      }
     default:
       return state;
   }

@@ -11,11 +11,22 @@ function Form({ form}) {
         <h2>Welcome to React</h2>
       </div>
       <p className="App-intro">
+        <label htmlFor='name'>Name:</label>
         <input
+          id='name'
           type='text'
-          onChange={(evt) => handleFormChange(evt.target.value)}
+          onChange={(evt) => handleFormChange(evt.target.value, 'name')}
           value={form.name}
          />
+      </p>
+      <p>
+        <label htmlFor='email'>Email</label>
+        <input
+          id='email'
+          type='email'
+          onChange={(evt) => handleFormChange(evt.target.value, 'email')}
+          value={form.email}
+        />
       </p>
     </div>
   )
